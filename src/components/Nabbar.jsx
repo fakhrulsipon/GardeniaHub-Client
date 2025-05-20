@@ -1,4 +1,5 @@
-import React from 'react';
+
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
@@ -11,7 +12,7 @@ const Navbar = () => {
             </svg>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-            <li><a>Home</a></li>
+            <li><NavLink to='/'>Home</NavLink></li>
             <li><a>Explore Gardeners</a></li>
             <li><a>Browse Tips</a></li>
             <li><a>Share a Garden Tip</a></li>
@@ -25,7 +26,7 @@ const Navbar = () => {
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium space-x-2">
-          <li><a className="hover:text-green-600 transition">Home</a></li>
+          <li><NavLink className="hover:text-green-600 transition">Home</NavLink></li>
           <li><a className="hover:text-green-600 transition">Explore Gardeners</a></li>
           <li><a className="hover:text-green-600 transition">Browse Tips</a></li>
           <li><a className="hover:text-green-600 transition">Share a Garden Tip</a></li>
