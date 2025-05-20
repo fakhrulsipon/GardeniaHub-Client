@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Rina Akter",
+    "age": 34,
+    "gender": "Female",
+    "status": "active",
+    "experience": "5 years experience in urban gardening",
+    "image": "https://i.ibb.co/tMgp31G/gardener1.jpg",
+    "totalSharedTips": 12
+  },
+  {
+    "name": "Tariq Islam",
+    "age": 41,
+    "gender": "Male",
+    "status": "inactive",
+    "experience": "7 years experience with hydroponics",
+    "image": "https://i.ibb.co/ryKk8yP/gardener2.jpg",
+    "totalSharedTips": 8
+  },
+  {
+    "name": "Lamia Chowdhury",
+    "age": 29,
+    "gender": "Female",
+    "status": "active",
+    "experience": "4 years experience in balcony and indoor plants",
+    "image": "https://i.ibb.co/k0sBdnF/gardener3.jpg",
+    "totalSharedTips": 15
+  },
+  {
+    "name": "Abdul Mannan",
+    "age": 50,
+    "gender": "Male",
+    "status": "active",
+    "experience": "10 years experience in composting and organic gardening",
+    "image": "https://i.ibb.co/G3FFRWj/gardener4.jpg",
+    "totalSharedTips": 20
+  },
+  {
+    "name": "Farzana Yesmin",
+    "age": 37,
+    "gender": "Female",
+    "status": "inactive",
+    "experience": "3 years experience in community gardening",
+    "image": "https://i.ibb.co/p14Xh1Z/gardener5.jpg",
+    "totalSharedTips": 5
+  },
+  {
+    "name": "Hasib Rahman",
+    "age": 32,
+    "gender": "Male",
+    "status": "active",
+    "experience": "6 years experience in aquaponics and terrace gardening",
+    "image": "https://i.ibb.co/QFk98yK/gardener6.jpg",
+    "totalSharedTips": 11
+  },
+  {
+    "name": "Nusrat Jahan",
+    "age": 28,
+    "gender": "Female",
+    "status": "active",
+    "experience": "3 years experience in plant-based DIY and garden decor",
+    "image": "https://i.ibb.co/mcz5Yk6/gardener7.jpg",
+    "totalSharedTips": 7
+  },
+  {
+    "name": "Sabbir Hossain",
+    "age": 40,
+    "gender": "Male",
+    "status": "inactive",
+    "experience": "15 years experience in nursery management",
+    "image": "https://i.ibb.co/S5N2yPY/gardener8.jpg",
+    "totalSharedTips": 9
+  },
+  {
+    "name": "Sharmin Akter",
+    "age": 35,
+    "gender": "Female",
+    "status": "active",
+    "experience": "6 years experience as a green roof specialist",
+    "image": "https://i.ibb.co/m5YfRM8/gardener9.jpg",
+    "totalSharedTips": 13
+  },
+  {
+    "name": "Mahmudul Hasan",
+    "age": 31,
+    "gender": "Male",
+    "status": "inactive",
+    "experience": "5 years experience with seasonal flowers",
+    "image": "https://i.ibb.co/YbY7Jkv/gardener10.jpg",
+    "totalSharedTips": 6
+  },
+  {
+    "name": "Shamima Nasrin",
+    "age": 39,
+    "gender": "Female",
+    "status": "active",
+    "experience": "9 years experience in vertical garden and sustainable farming",
+    "image": "https://i.ibb.co/HtpFnpf/gardener11.jpg",
+    "totalSharedTips": 17
+  },
+  {
+    "name": "Iqbal Hossain",
+    "age": 44,
+    "gender": "Male",
+    "status": "inactive",
+    "experience": "11 years experience as a soil and fertilizer specialist",
+    "image": "https://i.ibb.co/0fXfGD0/gardener12.jpg",
+    "totalSharedTips": 4
+  }
+]

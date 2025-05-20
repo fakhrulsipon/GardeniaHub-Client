@@ -35,7 +35,7 @@ const Slider = () => {
     <div className="w-full h-[500px] relative">
       <Swiper
         modules={[Autoplay]}
-        autoplay={{ delay: 3500 }}
+        autoplay={{ delay: 3000 }}
         loop={true}
         className="w-full h-full"
       >
