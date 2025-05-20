@@ -3,17 +3,69 @@ import { Link } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-  const {loginUser} = use(AuthContext)
+  const { loginUser, googleUser } = use(AuthContext)
 
   const handleLogin = (e) => {
     e.prventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password)
+
+    loginUser(email, password)
+      .then(res => {
+        console.log(res.user)
+        Swal.fire({
+          title: "Login Successful!",
+          text: "Welcome back to the Garden Hub 🌿",
+          icon: "success",
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
+      .catch(error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
   }
-    return (
-        <div className="max-w-md mx-auto mt-12 p-6 shadow-lg rounded-xl bg-white">
+
+  const handleGoogle = () => {
+    googleUser()
+      .then(res => {
+        console.log(res.user)
+        Swal.fire({
+          title: "SignIn Google Successful!",
+          text: "Welcome back to the Garden Hub 🌿",
+          icon: "success",
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
+      .catch(error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
+  }
+  return (
+    <div className="max-w-md mx-auto mt-12 p-6 shadow-lg rounded-xl bg-white">
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      <form  className="space-y-4">
+      <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="email"
           placeholder="Email"
@@ -33,12 +85,12 @@ const Login = () => {
         </button>
       </form>
 
-     <button
-  className="mt-4 w-full border border-gray-300 rounded-md py-2 px-4 flex items-center justify-center gap-3 hover:bg-gray-100 transition-all duration-200"
->
-  <FcGoogle size={22} />
-  <span className="font-medium text-gray-700">Continue with Google</span>
-</button>
+      <button onClick={handleGoogle}
+        className="mt-4 w-full border border-gray-300 rounded-md py-2 px-4 flex items-center justify-center gap-3 hover:bg-gray-100 transition-all duration-200"
+      >
+        <FcGoogle size={22} />
+        <span className="font-medium text-gray-700">Continue with Google</span>
+      </button>
 
       <p className="mt-4 text-center">
         Don’t have an account?{" "}
@@ -47,7 +99,7 @@ const Login = () => {
         </Link>
       </p>
     </div>
-    );
+  );
 };
 
 export default Login;

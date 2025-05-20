@@ -6,7 +6,7 @@ import { use } from 'react';
 import Swal from 'sweetalert2';
 
 const SignIn = () => {
-  const { signInUser } = use(AuthContext);
+  const { signInUser, googleUser } = use(AuthContext);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -17,17 +17,17 @@ const SignIn = () => {
     console.log(name, photo, email, password)
 
     signInUser(email, password)
-     .then(res => {
-  console.log(res.user);
-  Swal.fire({
-    title: "SignIn Successful!",
-    text: "Welcome back to the Garden Hub 🌿",
-    icon: "success",
-    timer: 3000,
-    timerProgressBar: true,
-    showConfirmButton: false
-  });
-})
+      .then(res => {
+        console.log(res.user);
+        Swal.fire({
+          title: "SignIn Successful!",
+          text: "Welcome back to the Garden Hub 🌿",
+          icon: "success",
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
       .catch(error => {
         Swal.fire({
           title: 'Error!',
@@ -38,8 +38,31 @@ const SignIn = () => {
           showConfirmButton: false
         });
       });
+  }
 
-
+  const handleGoogle = () => {
+    googleUser()
+      .then(res => {
+        console.log(res.user)
+        Swal.fire({
+          title: "SignIn Google Successful!",
+          text: "Welcome back to the Garden Hub 🌿",
+          icon: "success",
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
+      .catch(error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: false
+        });
+      })
   }
   return (
     <div className="max-w-md mx-auto mt-12 p-6 shadow-lg rounded-xl bg-white">
@@ -81,7 +104,7 @@ const SignIn = () => {
         </button>
       </form>
 
-      <button
+      <button onClick={handleGoogle}
         className="mt-4 w-full border border-gray-300 rounded-md py-2 px-4 flex items-center justify-center gap-3 hover:bg-gray-100 transition-all duration-200"
       >
         <FcGoogle size={22} />
