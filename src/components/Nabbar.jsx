@@ -5,7 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-  const { signOutUser } = use(AuthContext);
+  const { signOutUser, user } = use(AuthContext);
 
   const handleLogout = () => {
     signOutUser()
@@ -63,7 +63,16 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <Link onClick={handleLogout} to='/login' className="btn btn-md bg-green-600 text-white hover:bg-green-700">Login</Link>
+      {
+        user ? <> 
+        
+        <div>
+          <Link onClick={handleLogout} className="btn btn-md bg-green-600 text-white hover:bg-green-700">Logout</Link>
+        </div>
+
+        </>
+        :  <Link to='/login' className="btn btn-md bg-green-600 text-white hover:bg-green-700">Login</Link>
+      }
       </div>
     </div>
   );
