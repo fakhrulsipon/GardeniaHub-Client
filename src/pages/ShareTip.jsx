@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const ShareTip = () => {
@@ -21,7 +22,16 @@ const ShareTip = () => {
         })
        .then(res => res.json())
        .then(data => {
-        console.log('data after post', data)
+       if(data.insertedId){
+         Swal.fire({
+                  title: "Congratulations!",
+                  text: "Successfully added your gardening tip!",
+                  icon: "success",
+                  timer: 3000,
+                  timerProgressBar: true,
+                  showConfirmButton: false
+                });
+       }
        })
     }
     return (
@@ -29,85 +39,103 @@ const ShareTip = () => {
             <h2 className="text-2xl font-bold text-center text-green-800">🌱 Share a Garden Tip</h2>
 
             <form onSubmit={handleAddDb} className="space-y-4">
-                {/* Title */}       
-                <input
-                    type="text"
-                    placeholder="Title"
-                    className="w-full p-2 border border-green-300 rounded"
-                    required
-                />
+  {/* Title */}       
+  <input
+    type="text"
+    name="title"
+    placeholder="Title"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  />
 
-                {/* Plant Type / Topic */}
-                <input
-                    type="text"
-                    placeholder="Plant Type / Topic"
-                    className="w-full p-2 border border-green-300 rounded"
-                    required
-                />
+  {/* Plant Type / Topic */}
+  <input
+    type="text"
+    name="topic"
+    placeholder="Plant Type / Topic"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  />
 
-                {/* Difficulty Level */}
-                <select className="w-full p-2 border border-green-300 rounded" required>
-                    <option value="">Select Difficulty</option>
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
-                </select>
+  {/* Difficulty Level */}
+  <select
+    name="difficulty"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  >
+    <option value="">Select Difficulty</option>
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
+  </select>
 
-                {/* Description */}
-                <textarea
-                    placeholder="Description"
-                    rows="4"
-                    className="w-full p-2 border border-green-300 rounded"
-                    required
-                ></textarea>
+  {/* Description */}
+  <textarea
+    name="description"
+    placeholder="Description"
+    rows="4"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  ></textarea>
 
-                {/* Image URL */}
-                <input
-                    type="text"
-                    placeholder="Image URL"
-                    className="w-full p-2 border border-green-300 rounded"
-                    required
-                />
+  {/* Image URL */}
+  <input
+    type="text"
+    name="image"
+    placeholder="Image URL"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  />
 
-                {/* Category */}
-                <select className="w-full p-2 border border-green-300 rounded" required>
-                    <option value="">Select Category</option>
-                    <option>Composting</option>
-                    <option>Plant Care</option>
-                    <option>Vertical Gardening</option>
-                </select>
+  {/* Category */}
+  <select
+    name="category"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  >
+    <option value="">Select Category</option>
+    <option>Composting</option>
+    <option>Plant Care</option>
+    <option>Vertical Gardening</option>
+  </select>
 
-                {/* Availability */}
-                <select className="w-full p-2 border border-green-300 rounded" required>
-                    <option value="">Availability</option>
-                    <option>Public</option>
-                    <option>Hidden</option>
-                </select>
+  {/* Availability */}
+  <select
+    name="availability"
+    className="w-full p-2 border border-green-300 rounded"
+    required
+  >
+    <option value="">Availability</option>
+    <option>Public</option>
+    <option>Hidden</option>
+  </select>
 
-                {/* User Name (read-only) */}
-                <input
-                    type="text"
-                    value={user.displayName}
-                    readOnly
-                    className="w-full p-2 border border-gray-300 bg-gray-100 rounded"
-                />
+  {/* User Name (read-only) */}
+  <input
+    type="text"
+    name="userName"
+    value={user.displayName}
+    readOnly
+    className="w-full p-2 border border-gray-300 bg-gray-100 rounded"
+  />
 
-                {/* User Email (read-only) */}
-                <input
-                    type="email"
-                    value={user.email}
-                    readOnly
-                    className="w-full p-2 border border-gray-300 bg-gray-100 rounded"
-                />
+  {/* User Email (read-only) */}
+  <input
+    type="email"
+    name="userEmail"
+    value={user.email}
+    readOnly
+    className="w-full p-2 border border-gray-300 bg-gray-100 rounded"
+  />
 
-                {/* Submit Button */}
-                <button
-                    type="submit"
-                    className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
-                >
-                    Submit Tip
-                </button>
-            </form>
+  {/* Submit Button */}
+  <button
+    type="submit"
+    className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+  >
+    Submit Tip
+  </button>
+</form>
         </div>
     );
 };

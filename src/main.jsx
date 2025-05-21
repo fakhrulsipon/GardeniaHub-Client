@@ -13,6 +13,8 @@ import SignIn from './pages/SignIn';
 import AuthProvider from './provider/AuthProvider';
 import ShareTip from './pages/ShareTip';
 import PrivetRoute from './provider/PrivetRoute';
+import BrowseTips from './pages/BrowseTips';
+import TipDetails from './pages/TipDetails';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,15 @@ const router = createBrowserRouter([
       {
         path: '/shareTip',
         element: <PrivetRoute><ShareTip></ShareTip></PrivetRoute>
+      },
+      {
+        path: '/browseTips',
+        element: <BrowseTips></BrowseTips>
+      },
+      {
+        path: '/tip-details/:id',
+        loader: ({params}) => fetch(`http://localhost:3000/tip-details/${params.id}`),
+        element: <TipDetails></TipDetails>
       }
     ]
   },
