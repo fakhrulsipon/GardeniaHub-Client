@@ -1,14 +1,35 @@
 import React, { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
+
 const ShareTip = () => {
     const {user} = use(AuthContext)
+
+    const handleAddDb = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const formData = new FormData(form)
+        const allTips =  Object.fromEntries(formData.entries())
+        console.log(allTips)
+
+        fetch('http://localhost:3000/share-garden',{
+            method: "POST",
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(allTips)
+        })
+       .then(res => res.json())
+       .then(data => {
+        console.log('data after post', data)
+       })
+    }
     return (
         <div className="max-w-xl mx-auto p-6 bg-green-100 rounded-lg space-y-4 mt-10">
             <h2 className="text-2xl font-bold text-center text-green-800">🌱 Share a Garden Tip</h2>
 
-            <form className="space-y-4">
-                {/* Title */}
+            <form onSubmit={handleAddDb} className="space-y-4">
+                {/* Title */}       
                 <input
                     type="text"
                     placeholder="Title"

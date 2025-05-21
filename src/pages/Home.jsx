@@ -1,14 +1,16 @@
 
 import Slider from '../components/Slider';
 import SeasonalPlants from '../components/SeasonalPlants';
-import TipsOfTheMonth from '../components/TipsOfTheMonth';
+import ActiveGardeners from '../components/ActiveGardeners';
 
 const Home = () => {
     return (
         <div>
             <Slider></Slider>
+            <ActiveGardeners></ActiveGardeners>
             <SeasonalPlants></SeasonalPlants>
-            <TipsOfTheMonth></TipsOfTheMonth>
+            {/* <TipsOfTheMonth></TipsOfTheMonth> */}
+
         </div>
     );
 };
