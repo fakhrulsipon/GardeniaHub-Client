@@ -15,6 +15,7 @@ import ShareTip from './pages/ShareTip';
 import PrivetRoute from './provider/PrivetRoute';
 import BrowseTips from './pages/BrowseTips';
 import TipDetails from './pages/TipDetails';
+import MyTips from './pages/MyTips';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
         path: '/tip-details/:id',
         loader: ({params}) => fetch(`http://localhost:3000/tip-details/${params.id}`),
         element: <TipDetails></TipDetails>
+      },
+      {
+        path: '/myTips',
+        loader: () => fetch('http://localhost:3000/share-gardens'),
+        element: <MyTips></MyTips>
       }
     ]
   },

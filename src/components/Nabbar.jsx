@@ -59,7 +59,7 @@ const Navbar = () => {
           <li><NavLink className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
           <li><NavLink to='/browseTips' className="hover:text-green-600 transition">Browse Tips</NavLink></li>
           <li><NavLink to='/shareTip' className="hover:text-green-600 transition">Share a Garden Tip</NavLink></li>
-          <li><NavLink className="hover:text-green-600 transition">My Tips</NavLink></li>
+          <li><NavLink to='/myTips' className="hover:text-green-600 transition">My Tips</NavLink></li>
         </ul>
       </div>
 
