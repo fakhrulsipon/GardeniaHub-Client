@@ -1,18 +1,19 @@
 
-import { use } from 'react';
+import { use, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const { signOutUser, user } = use(AuthContext);
+  const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
     signOutUser()
       .then(() => {
         Swal.fire({
-          title: "Logout Successful!",
-          text: "Welcome back to the Garden Hub 🌿",
+          title: "Congratulations!",
+          text: "You have successfully Logout",
           icon: "success",
           timer: 3000,
           timerProgressBar: true,
@@ -67,10 +68,12 @@ const Navbar = () => {
         user ? <> 
         
         <div className='flex gap-2'>
-         <div>
+         <div className="tooltip tooltip-left" data-tip={user.displayName} onClick={() => setShowLogout(!showLogout)}>
           <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
          </div>
-          <Link onClick={handleLogout} className="btn btn-md bg-green-600 text-white hover:bg-green-700">Logout</Link>
+        {
+          showLogout &&  <Link onClick={handleLogout} className="btn btn-md bg-green-600 text-white hover:bg-green-700">Logout</Link>
+        }
         </div>
 
         </>

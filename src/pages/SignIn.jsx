@@ -6,7 +6,7 @@ import { use, useState } from 'react';
 import Swal from 'sweetalert2';
 
 const SignIn = () => {
-  const { signInUser, googleUser, updateProfileUser, setuser } = use(AuthContext);
+  const { signInUser, googleUser, updateProfileUser, setUser } = use(AuthContext);
   const [showError, setErrorShow] = useState('')
 
   const handleSignIn = (e) => {
@@ -44,7 +44,7 @@ const SignIn = () => {
           const updateUser = { displayName: name, photoURL: photo }
           updateProfileUser(updateUser)
             .then(() => {
-              setuser({ ...res.user, displayName: name, photoURL: photo })
+              setUser({ ...res.user, displayName: name, photoURL: photo })
               Swal.fire({
                 title: "Congratulations!",
                 text: "You have successfully Register in.",

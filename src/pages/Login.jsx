@@ -9,7 +9,7 @@ const Login = () => {
   const { loginUser, googleUser } = use(AuthContext)
 
   const handleLogin = (e) => {
-    e.prventDefault()
+    e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password)
