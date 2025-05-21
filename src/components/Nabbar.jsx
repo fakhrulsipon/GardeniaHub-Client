@@ -67,6 +67,7 @@ const Navbar = () => {
         user ? <> 
         
         <div>
+         
           <Link onClick={handleLogout} className="btn btn-md bg-green-600 text-white hover:bg-green-700">Logout</Link>
         </div>
 

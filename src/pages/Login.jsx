@@ -18,8 +18,8 @@ const Login = () => {
       .then(res => {
         console.log(res.user)
         Swal.fire({
-          title: "Login Successful!",
-          text: "Welcome back to the Garden Hub 🌿",
+          title: "Congratulations!",
+          text: "You have successfully Login",
           icon: "success",
           timer: 3000,
           timerProgressBar: true,
@@ -43,8 +43,8 @@ const Login = () => {
       .then(res => {
         console.log(res.user)
         Swal.fire({
-          title: "SignIn Google Successful!",
-          text: "Welcome back to the Garden Hub 🌿",
+          title: "Congratulations!",
+          text: "You have successfully Login With Google",
           icon: "success",
           timer: 3000,
           timerProgressBar: true,

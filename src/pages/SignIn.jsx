@@ -6,7 +6,7 @@ import { use } from 'react';
 import Swal from 'sweetalert2';
 
 const SignIn = () => {
-  const { signInUser, googleUser } = use(AuthContext);
+  const { signInUser, googleUser, updateProfileUser, setuser } = use(AuthContext);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -18,15 +18,31 @@ const SignIn = () => {
 
     signInUser(email, password)
       .then(res => {
-        console.log(res.user);
-        Swal.fire({
-          title: "SignIn Successful!",
-          text: "Welcome back to the Garden Hub 🌿",
-          icon: "success",
-          timer: 3000,
-          timerProgressBar: true,
-          showConfirmButton: false
-        });
+
+        const updateUser = { displayName: name, photoURL: photo }
+        updateProfileUser(updateUser)
+          .then(() => {
+            setuser({ ...res.user, displayName: name, photoURL: photo })
+            Swal.fire({
+              title: "Congratulations!",
+              text: "You have successfully Register in.",
+              icon: "success",
+              timer: 3000,
+              timerProgressBar: true,
+              showConfirmButton: false
+            });
+          })
+          .catch(error => {
+            Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+              timer: 3000,
+              timerProgressBar: true,
+              showConfirmButton: false
+            });
+          })
+
       })
       .catch(error => {
         Swal.fire({
@@ -45,8 +61,8 @@ const SignIn = () => {
       .then(res => {
         console.log(res.user)
         Swal.fire({
-          title: "SignIn Google Successful!",
-          text: "Welcome back to the Garden Hub 🌿",
+          title: "Congratulations!",
+          text: "You have successfully Login With Google",
           icon: "success",
           timer: 3000,
           timerProgressBar: true,
