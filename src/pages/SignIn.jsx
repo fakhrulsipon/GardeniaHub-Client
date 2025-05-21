@@ -41,6 +41,7 @@ const SignIn = () => {
 
       signInUser(email, password)
         .then(res => {
+          
           const updateUser = { displayName: name, photoURL: photo }
           updateProfileUser(updateUser)
             .then(() => {

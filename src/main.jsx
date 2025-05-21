@@ -11,6 +11,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import SignIn from './pages/SignIn';
 import AuthProvider from './provider/AuthProvider';
+import ShareTip from './pages/ShareTip';
+import PrivetRoute from './provider/PrivetRoute';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>
+      },
+      {
+        path: '/shareTip',
+        element: <PrivetRoute><ShareTip></ShareTip></PrivetRoute>
       }
     ]
   },
