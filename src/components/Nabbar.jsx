@@ -66,8 +66,10 @@ const Navbar = () => {
       {
         user ? <> 
         
-        <div>
-         
+        <div className='flex gap-2'>
+         <div>
+          <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
+         </div>
           <Link onClick={handleLogout} className="btn btn-md bg-green-600 text-white hover:bg-green-700">Logout</Link>
         </div>
 
