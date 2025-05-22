@@ -4,14 +4,28 @@ import { useLoaderData } from 'react-router';
 
 const TipDetails = () => {
     const tipDetails = useLoaderData();
-    const [likes, setLikes] = useState(0);
+    const [likes, setLikes] = useState(tipDetails.totalLiked || 0);
     const [liked, setLiked] = useState(false);
 
     const handleLike = () => {
-        if (!liked) {
+       if (!liked) {
+      fetch(`http://localhost:3000/share-garden/like/${tipDetails._id}`, {
+        method: 'PATCH',
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
             setLikes(likes + 1);
             setLiked(true);
-        }
+          } else {
+            alert('Could not update like count. Please try again.');
+          }
+        })
+        .catch(err => {
+          console.error('Error updating like:', err);
+          alert('Something went wrong. Please try again later.');
+        });
+    }
     };
 
     return (

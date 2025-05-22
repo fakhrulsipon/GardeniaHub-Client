@@ -41,7 +41,7 @@ useEffect(() => {
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your Tips has been deleted.",
                                 icon: "success"
                             });
 

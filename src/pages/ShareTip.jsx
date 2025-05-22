@@ -13,8 +13,8 @@ const ShareTip = () => {
         const allTip =  Object.fromEntries(formData.entries())
 
         const allTips = {
-           totalLiked: 0,
-           allTip
+           ...allTip,
+           totalLiked: 0
         }
 
         console.log(allTips)
