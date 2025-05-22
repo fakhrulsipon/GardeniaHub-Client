@@ -17,6 +17,7 @@ import BrowseTips from './pages/BrowseTips';
 import TipDetails from './pages/TipDetails';
 import MyTips from './pages/MyTips';
 import UpdateTips from './pages/UpdateTips';
+import ExploreGardeners from './pages/ExploreGardeners';
 
 const router = createBrowserRouter([
   {
@@ -54,8 +55,14 @@ const router = createBrowserRouter([
         element: <MyTips></MyTips>
       },
       {
-        path: '/updateTips',
-        element: <UpdateTips></UpdateTips>
+        path: '/updateTips/:id',
+        loader: ({params}) => fetch(`http://localhost:3000/tip-details/${params.id}`),
+        element: <PrivetRoute><UpdateTips></UpdateTips></PrivetRoute>
+      },
+      {
+        path: '/exploreGardeners',
+        loader: () => fetch('http://localhost:3000/actives'),
+        element: <ExploreGardeners></ExploreGardeners>
       }
     ]
   },

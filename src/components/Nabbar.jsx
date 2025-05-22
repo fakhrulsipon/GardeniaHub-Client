@@ -42,7 +42,7 @@ const Navbar = () => {
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
             <li><NavLink to='/' className="hover:text-green-600 transition">Home</NavLink></li>
-          <li><NavLink className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
+          <li><NavLink to='/exploreGardeners' className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
           <li><NavLink to='/browseTips' className="hover:text-green-600 transition">Browse Tips</NavLink></li>
           <li><NavLink to='/shareTip' className="hover:text-green-600 transition">Share a Garden Tip</NavLink></li>
           <li><NavLink className="hover:text-green-600 transition">My Tips</NavLink></li>
@@ -56,7 +56,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium space-x-2">
           <li><NavLink to='/' className="hover:text-green-600 transition">Home</NavLink></li>
-          <li><NavLink className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
+          <li><NavLink to='/exploreGardeners'  className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
           <li><NavLink to='/browseTips' className="hover:text-green-600 transition">Browse Tips</NavLink></li>
           <li><NavLink to='/shareTip' className="hover:text-green-600 transition">Share a Garden Tip</NavLink></li>
           <li><NavLink to='/myTips' className="hover:text-green-600 transition">My Tips</NavLink></li>

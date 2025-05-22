@@ -59,7 +59,7 @@ const MyTips = () => {
                                     <td className="border px-4 py-2">{tip.category}</td>
                                     <td className="border px-4 py-2">{tip.topic}</td>
                                     <td className="border px-4 py-2 space-x-2">
-                                        <Link to='/updateTips'
+                                        <Link to={`/updateTips/${tip._id}`}
 
                                             className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
                                         >
