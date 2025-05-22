@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
+import { Typewriter } from "react-simple-typewriter";
 
 const Slider = () => {
   const slides = [
@@ -35,7 +36,7 @@ const Slider = () => {
     <div className="w-full h-[500px] relative">
       <Swiper
         modules={[Autoplay]}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3500 }}
         loop={true}
         className="w-full h-full"
       >
@@ -53,7 +54,16 @@ const Slider = () => {
               {/* Content */}
               <div className="relative z-10 max-w-xl text-left px-6 md:px-10">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-fade-in">
-                  {slide.title}
+                  {/* implement typewriter */}
+                  <Typewriter
+                    words={[slide.title]}
+                    loop={false}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={2000}
+                  />
                 </h2>
                 <p className="text-lg md:text-xl text-white mb-6 drop-shadow-md">
                   {slide.description}

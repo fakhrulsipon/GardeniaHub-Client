@@ -10,7 +10,13 @@ const ShareTip = () => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form)
-        const allTips =  Object.fromEntries(formData.entries())
+        const allTip =  Object.fromEntries(formData.entries())
+
+        const allTips = {
+           totalLiked: 0,
+           allTip
+        }
+
         console.log(allTips)
 
         fetch('http://localhost:3000/share-garden',{

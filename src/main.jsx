@@ -18,6 +18,7 @@ import TipDetails from './pages/TipDetails';
 import MyTips from './pages/MyTips';
 import UpdateTips from './pages/UpdateTips';
 import ExploreGardeners from './pages/ExploreGardeners';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -51,8 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myTips',
-        loader: () => fetch('http://localhost:3000/share-gardens'),
-        element: <MyTips></MyTips>
+        element: <PrivetRoute><MyTips></MyTips></PrivetRoute>
       },
       {
         path: '/updateTips/:id',
@@ -66,6 +66,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '*',
+    element: <NotFound></NotFound>
+  }
 ]);
 
 

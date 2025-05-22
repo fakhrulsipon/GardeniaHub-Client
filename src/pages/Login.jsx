@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
   const { loginUser, googleUser } = use(AuthContext)
+  const navigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const Login = () => {
           timerProgressBar: true,
           showConfirmButton: false
         });
+      navigate('/')
       })
       .catch(error => {
         Swal.fire({

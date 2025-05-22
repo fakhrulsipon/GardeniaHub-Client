@@ -4,16 +4,15 @@ import { Link } from 'react-router';
 const BrowseTips = () => {
 
     const [tips, setTips] = useState([])
+    const [difficulty, setDifficulty] = useState("");
 
-    useEffect(() => {
-        fetch('http://localhost:3000/share-garden')
-          .then(res => res.json())
-          .then(data => {
-            setTips(data);
-          })
-      }, []);
-
-      
+       useEffect(() => {
+  fetch(
+    `http://localhost:3000/share-garden${difficulty ? `?difficulty=${difficulty}` : ''}`
+  )
+    .then((res) => res.json())
+    .then((data) => setTips(data))
+}, [difficulty]);
 
 
     return (
@@ -22,6 +21,20 @@ const BrowseTips = () => {
       <h2 className="text-2xl lg:text-3xl font-bold text-center text-green-700 mb-6">
         🌿 Browse Garden Tips
       </h2>
+
+      {/* Filter Dropdown */}
+      <div className="mb-6 text-center">
+        <label className="text-green-700 font-semibold mr-2">Filter by Difficulty:</label>
+        <select
+          onChange={(e) => setDifficulty(e.target.value)}
+          className="border border-green-400 px-4 py-2 rounded focus:outline-none focus:ring focus:border-green-600"
+        >
+          <option value="">All</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
 
       <div className="overflow-x-auto">
         <table className="min-w-full border border-green-300 text-sm md:text-base lg:text-lg">
@@ -50,7 +63,7 @@ const BrowseTips = () => {
                     to={`/tip-details/${tip._id}`}
                     className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300 text-sm lg:text-base"
                   >
-                    See More 👁️
+                    See More
                   </Link>
                 </td>
               </tr>
@@ -63,3 +76,14 @@ const BrowseTips = () => {
 };
 
 export default BrowseTips;
+
+
+
+
+// useEffect(() => {
+    //     fetch('http://localhost:3000/share-garden')
+    //       .then(res => res.json())
+    //       .then(data => {
+    //         setTips(data);
+    //       })
+    //   }, []);

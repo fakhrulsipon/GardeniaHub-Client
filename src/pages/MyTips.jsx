@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData } from 'react-router';
+
+import { use, useEffect, useState } from 'react';
+import { Link, } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../provider/AuthProvider';
 
 const MyTips = () => {
-    const initialMyTips = useLoaderData();
-    const [myTips, setMyTips] = useState(initialMyTips)
+    const {user} = use(AuthContext)
+    
+    const [myTips, setMyTips] = useState([])
+    console.log(myTips)
+
+    
+useEffect(() => {
+    fetch(`http://localhost:3000/share-gardens/${user?.email}`)
+    .then(res => res.json())
+    .then(data =>{
+        setMyTips(data)
+    })
+}, [])
+
 
     const handleDelete = (id) => {
         Swal.fire({
