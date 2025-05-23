@@ -52,7 +52,7 @@ const Slider = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
 
               {/* Content */}
-              <div className="relative z-10 max-w-xl text-left px-6 md:px-10">
+              <div className="relative z-10  text-left px-6 md:px-10">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-fade-in">
                   {/* implement typewriter */}
                   <Typewriter

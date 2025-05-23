@@ -19,7 +19,8 @@ import MyTips from './pages/MyTips';
 import UpdateTips from './pages/UpdateTips';
 import ExploreGardeners from './pages/ExploreGardeners';
 import NotFound from './pages/NotFound';
-import ThemeProvider from './provider/ThemeContext';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 const router = createBrowserRouter([
   {
@@ -78,10 +79,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <ThemeProvider>
-    <AuthProvider>
+  
+  <HelmetProvider>
+      <AuthProvider>
 <RouterProvider router={router} />
   </AuthProvider>
-  </ThemeProvider>
+  </HelmetProvider>
+  
   </StrictMode>,
 )

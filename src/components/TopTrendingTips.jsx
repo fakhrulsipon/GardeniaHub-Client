@@ -4,21 +4,22 @@ import TopCard from './TopCard';
 const TopTrendingTips = () => {
 
     const [topTips, setTopTips] = useState([]);
-    // const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        // setLoading(true)
+        setLoading(true)
         fetch('http://localhost:3000/trending-tips')
         .then(res => res.json())
         .then(data => {
             setTopTips(data)
-            // setLoading(false)
+            setLoading(false)
         })
-    }, [topTips])
+    }, [])
+  
 
-//      if(loading){
-//     return <span className="loading loading-bars loading-xl"></span>
-//   }
+     if(loading){
+    return <span className="loading loading-bars loading-xl"></span>
+  }
 
     return (
         <div className='my-10 px-4'>

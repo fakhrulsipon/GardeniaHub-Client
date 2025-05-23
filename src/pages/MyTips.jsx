@@ -3,6 +3,7 @@ import { use, useEffect, useState } from 'react';
 import { Link, } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const MyTips = () => {
     const {user} = use(AuthContext)
@@ -53,26 +54,33 @@ useEffect(() => {
         });
     }
     return (
+        <>
+        <Helmet>
+            <title>My Tips</title>
+        </Helmet>
        <div className="px-2 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto mt-5">
-    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center">My Garden Tips</h1>
-    <div className="overflow-x-auto rounded shadow">
-      <table className="min-w-full bg-white border border-gray-200 text-sm sm:text-base">
-        <thead className="bg-green-100 text-gray-700">
+    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center text-green-800 dark:text-green-200">
+      My Garden Tips
+    </h1>
+
+    <div className="overflow-x-auto rounded shadow dark:bg-gray-800">
+      <table className="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm sm:text-base">
+        <thead className="bg-green-100 dark:bg-green-700 text-gray-700 dark:text-green-100">
           <tr>
-            <th className="border px-2 sm:px-4 py-2 text-left">Title</th>
-            <th className="border px-2 sm:px-4 py-2 text-left">Category</th>
-            <th className="border px-2 sm:px-4 py-2 text-left">Plant Type</th>
-            <th className="border px-2 sm:px-4 py-2 text-left">Actions</th>
+            <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Title</th>
+            <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Category</th>
+            <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Plant Type</th>
+            <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Actions</th>
           </tr>
         </thead>
         <tbody>
           {myTips.map(tip => (
-            <tr key={tip._id} className="text-gray-800 hover:bg-green-50 transition-colors">
-              <td className="border px-2 sm:px-4 py-2">{tip.title}</td>
-              <td className="border px-2 sm:px-4 py-2">{tip.category}</td>
-              <td className="border px-2 sm:px-4 py-2">{tip.topic}</td>
-              <td className="border px-2 sm:px-4 py-2 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <tr key={tip._id} className="text-gray-800 dark:text-gray-100 hover:bg-green-50 dark:hover:bg-gray-700 transition-colors">
+              <td className="border dark:border-gray-700 px-2 sm:px-4 py-2">{tip.title}</td>
+              <td className="border dark:border-gray-700 px-2 sm:px-4 py-2">{tip.category}</td>
+              <td className="border dark:border-gray-700 px-2 sm:px-4 py-2">{tip.topic}</td>
+              <td className="border dark:border-gray-700 px-2 sm:px-4 py-2 flex flex-col sm:flex-row items-start sm:items-center gap-2">
                 <Link
                   to={`/updateTips/${tip._id}`}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
@@ -93,6 +101,7 @@ useEffect(() => {
     </div>
   </div>
 </div>
+</>
     );
 };
 

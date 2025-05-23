@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router';
 
 const TipDetails = () => {
@@ -29,6 +30,10 @@ const TipDetails = () => {
     };
 
     return (
+      <>
+      <Helmet>
+        <title>Tips Details</title>
+      </Helmet>
         <div className="p-4 mt-10  border border-emerald-400 max-w-3xl mx-auto shadow-lg rounded-xl bg-white dark:bg-gray-800">
             <img src={tipDetails.image} alt={tipDetails.title} className="w-full h-64 object-cover rounded-xl mb-4" />
             <h1 className="text-3xl font-bold mb-2">{tipDetails.topic}</h1>
@@ -47,6 +52,7 @@ const TipDetails = () => {
                 👍 Like {likes > 0 && `(${likes})`}
             </button>
         </div>
+        </>
     );
 };
 

@@ -2,16 +2,18 @@ import { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
-import { ThemeContext } from '../provider/ThemeContext';
+import ThemeToggle from '../provider/ThemeToggle';
+
+
 
 const Nabbar = () => {
   const { signOutUser, user } = use(AuthContext);
-  const { theme, toggleTheme } = use(ThemeContext);
+  
 
   // 🔗 Common NavLink Style
   const navLinkStyle = ({ isActive }) =>
     isActive
-      ? "text-green-700 dark:text-emerald-400 font-bold underline underline-offset-4"
+      ? "text-green-700 font-bold underline underline-offset-6 dark:text-emerald-400"
       : "text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-emerald-300 transition duration-200";
 
   const handleLogout = () => {
@@ -39,8 +41,12 @@ const Nabbar = () => {
   };
 
   return (
+    
     <div className="navbar bg-green-50 dark:bg-gray-900 text-green-900 dark:text-white shadow-md px-4 md:px-8 lg:px-20 py-2">
       {/* Start */}
+       <h1 className="text-2xl hidden md:hidden font-bold text-green-800 hover:text-green-600 transition-all duration-300">
+          🌱 GardeniaHub
+        </h1>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -86,15 +92,16 @@ const Nabbar = () => {
       {/* End */}
       <div className="navbar-end gap-4">
         {user ? (
-          <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="tooltip tooltip-left" data-tip={user.displayName}>
+          <div className="dropdown dropdown-center">
+            <div tabIndex={0} role="button"
+               className="tooltip tooltip-left" data-tip={user.displayName}>
               <img
                 src={user.photoURL}
                 alt="User"
                 className="w-10 h-10 rounded-full border-2 border-green-500 cursor-pointer"
               />
             </div>
-            <ul className="menu menu-sm dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-40">
+            <ul className="menu menu-sm  dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-40">
               <li>
                 <button
                   onClick={handleLogout}
@@ -109,15 +116,11 @@ const Nabbar = () => {
           <Link to="/login" className="btn btn-md bg-green-600 text-white hover:bg-green-700">Login</Link>
         )}
 
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="btn btn-md ml-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white border-none"
-        >
-          {theme === 'dark' ? '🌞 Light' : '🌙 Dark'}
-        </button>
+       <ThemeToggle></ThemeToggle>
       </div>
     </div>
+
+  
   );
 };
 

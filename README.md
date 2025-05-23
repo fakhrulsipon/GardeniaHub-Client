@@ -2,6 +2,7 @@
 🔗 Live Site URL: https://gardeniahub.web.app
 (Replace with your actual URL if needed)
 
+
 ✅ Key Features:
 🔐 Firebase Authentication (Google & Email Login)
 

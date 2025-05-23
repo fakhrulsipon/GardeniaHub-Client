@@ -28,28 +28,30 @@ const SeasonalPlants = () => {
 
   return (
     <section className="my-12 px-6 max-w-6xl mx-auto">
-  <h2 className="text-4xl font-extrabold text-green-800 mb-10 text-center tracking-wide drop-shadow-md">
+  <h2 className="text-4xl font-extrabold text-green-800 dark:text-green-200 mb-10 text-center tracking-wide drop-shadow-md">
     Seasonal Plants Guide
   </h2>
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
     {plants.map((plant, index) => (
       <div
         key={index}
-        className="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex items-center gap-6 border border-green-500"
+        className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex items-center gap-6 border border-green-500 dark:border-green-700"
       >
         <img
           src={plant.image}
           alt={plant.name}
-          className="w-28 h-28 object-cover rounded-full border-4 border-green-300 shadow-md"
+          className="w-28 h-28 object-cover rounded-full border-4 border-green-300 dark:border-green-600 shadow-md"
         />
         <div>
-          <h3 className="text-2xl font-bold text-green-900 mb-1 tracking-tight">
+          <h3 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-1 tracking-tight">
             {plant.name}
           </h3>
-          <p className="text-green-700 italic mb-3 text-lg font-medium">
+          <p className="text-green-700 dark:text-green-300 italic mb-3 text-lg font-medium">
             Best Season: <span className="font-semibold">{plant.season}</span>
           </p>
-          <p className="text-gray-700 leading-relaxed max-w-md">{plant.description}</p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed max-w-md">
+            {plant.description}
+          </p>
         </div>
       </div>
     ))}
