@@ -4,14 +4,21 @@ import TopCard from './TopCard';
 const TopTrendingTips = () => {
 
     const [topTips, setTopTips] = useState([]);
+    // const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        // setLoading(true)
         fetch('http://localhost:3000/trending-tips')
         .then(res => res.json())
         .then(data => {
             setTopTips(data)
+            // setLoading(false)
         })
     }, [topTips])
+
+//      if(loading){
+//     return <span className="loading loading-bars loading-xl"></span>
+//   }
 
     return (
         <div className='my-10 px-4'>
@@ -23,7 +30,7 @@ const TopTrendingTips = () => {
             </p>
         </div>
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        <div className='grid lg:grid-cols-3 gap-4'>
             {
                 topTips.map((toptip, index) => (
                     <TopCard key={index} toptip={toptip} />

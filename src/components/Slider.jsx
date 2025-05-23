@@ -33,7 +33,7 @@ const Slider = () => {
   ];
 
   return (
-    <div className="w-full h-[500px] relative">
+    <div className="w-full h-[500px] relative rounded-3xl">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3500 }}

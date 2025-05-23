@@ -31,7 +31,7 @@ const SeasonalPlants = () => {
   <h2 className="text-4xl font-extrabold text-green-800 mb-10 text-center tracking-wide drop-shadow-md">
     Seasonal Plants Guide
   </h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
     {plants.map((plant, index) => (
       <div
         key={index}

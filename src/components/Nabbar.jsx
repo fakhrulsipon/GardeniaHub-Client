@@ -1,19 +1,25 @@
-
-import { use, useState } from 'react';
+import { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { ThemeContext } from '../provider/ThemeContext';
 
-const Navbar = () => {
+const Nabbar = () => {
   const { signOutUser, user } = use(AuthContext);
-  const [showLogout, setShowLogout] = useState(false);
+  const { theme, toggleTheme } = use(ThemeContext);
+
+  // 🔗 Common NavLink Style
+  const navLinkStyle = ({ isActive }) =>
+    isActive
+      ? "text-green-700 dark:text-emerald-400 font-bold underline underline-offset-4"
+      : "text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-emerald-300 transition duration-200";
 
   const handleLogout = () => {
     signOutUser()
       .then(() => {
         Swal.fire({
           title: "Congratulations!",
-          text: "You have successfully Logout",
+          text: "You have successfully logged out",
           icon: "success",
           timer: 3000,
           timerProgressBar: true,
@@ -29,10 +35,12 @@ const Navbar = () => {
           timerProgressBar: true,
           showConfirmButton: false
         });
-      })
-  }
+      });
+  };
+
   return (
-    <div className="navbar bg-green-50 text-green-900 shadow-md px-4 py-2">
+    <div className="navbar bg-green-50 dark:bg-gray-900 text-green-900 dark:text-white shadow-md px-4 md:px-8 lg:px-20 py-2">
+      {/* Start */}
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,47 +49,76 @@ const Navbar = () => {
             </svg>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-            <li><NavLink to='/' className="hover:text-green-600 transition">Home</NavLink></li>
-          <li><NavLink to='/exploreGardeners' className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
-          <li><NavLink to='/browseTips' className="hover:text-green-600 transition">Browse Tips</NavLink></li>
-          <li><NavLink to='/shareTip' className="hover:text-green-600 transition">Share a Garden Tip</NavLink></li>
-          <li><NavLink className="hover:text-green-600 transition">My Tips</NavLink></li>
+            <li><NavLink to='/' className={navLinkStyle}>Home</NavLink></li>
+            <li><NavLink to='/exploreGardeners' className={navLinkStyle}>Explore Gardeners</NavLink></li>
+            <li><NavLink to='/browseTips' className={navLinkStyle}>Browse Tips</NavLink></li>
+            {
+              user && <>
+              
+              <li><NavLink to='/shareTip' className={navLinkStyle}>Share a Garden Tip</NavLink></li>
+            <li><NavLink to='/myTips' className={navLinkStyle}>My Tips</NavLink></li>
+              
+              </>
+            }
           </ul>
         </div>
-        <a className="text-2xl font-bold text-green-800 hover:text-green-600 transition-all duration-300">
+        <a className="text-2xl hidden md:block font-bold text-green-800 hover:text-green-600 transition-all duration-300">
           🌱 GardeniaHub
         </a>
       </div>
 
+      {/* Center */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 font-medium space-x-2">
-          <li><NavLink to='/' className="hover:text-green-600 transition">Home</NavLink></li>
-          <li><NavLink to='/exploreGardeners'  className="hover:text-green-600 transition">Explore Gardeners</NavLink></li>
-          <li><NavLink to='/browseTips' className="hover:text-green-600 transition">Browse Tips</NavLink></li>
-          <li><NavLink to='/shareTip' className="hover:text-green-600 transition">Share a Garden Tip</NavLink></li>
-          <li><NavLink to='/myTips' className="hover:text-green-600 transition">My Tips</NavLink></li>
+        <ul className="menu menu-horizontal px-1 font-medium space-x-4">
+          <li><NavLink to='/' className={navLinkStyle}>Home</NavLink></li>
+          <li><NavLink to='/exploreGardeners' className={navLinkStyle}>Explore Gardeners</NavLink></li>
+          <li><NavLink to='/browseTips' className={navLinkStyle}>Browse Tips</NavLink></li>
+          {
+            user && <>
+            
+            <li><NavLink to='/shareTip' className={navLinkStyle}>Share a Garden Tip</NavLink></li>
+          <li><NavLink to='/myTips' className={navLinkStyle}>My Tips</NavLink></li>
+            </>
+          }
         </ul>
       </div>
 
-      <div className="navbar-end">
-      {
-        user ? <> 
-        
-        <div className='flex gap-2'>
-         <div className="tooltip tooltip-left" data-tip={user.displayName} onClick={() => setShowLogout(!showLogout)}>
-          <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
-         </div>
-        {
-          showLogout &&  <Link onClick={handleLogout} className="btn btn-md bg-green-600 text-white hover:bg-green-700">Logout</Link>
-        }
-        </div>
+      {/* End */}
+      <div className="navbar-end gap-4">
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="tooltip tooltip-left" data-tip={user.displayName}>
+              <img
+                src={user.photoURL}
+                alt="User"
+                className="w-10 h-10 rounded-full border-2 border-green-500 cursor-pointer"
+              />
+            </div>
+            <ul className="menu menu-sm dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-40">
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-sm bg-green-600 text-white hover:bg-green-700 w-full"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/login" className="btn btn-md bg-green-600 text-white hover:bg-green-700">Login</Link>
+        )}
 
-        </>
-        :  <Link to='/login' className="btn btn-md bg-green-600 text-white hover:bg-green-700">Login</Link>
-      }
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="btn btn-md ml-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white border-none"
+        >
+          {theme === 'dark' ? '🌞 Light' : '🌙 Dark'}
+        </button>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export default Nabbar;

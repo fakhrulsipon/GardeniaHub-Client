@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 
 import { AuthContext } from '../provider/AuthProvider';
@@ -9,6 +9,7 @@ const SignIn = () => {
   const { signInUser, googleUser, updateProfileUser, setUser } = use(AuthContext);
   const [showError, setErrorShow] = useState('')
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -55,7 +56,7 @@ const SignIn = () => {
                 timerProgressBar: true,
                 showConfirmButton: false
               });
-              navigate('/')
+              navigate(location.state || '/')
             })
             .catch(error => {
               Swal.fire({
@@ -93,6 +94,7 @@ const SignIn = () => {
             timerProgressBar: true,
             showConfirmButton: false
           });
+          navigate(location.state || '/')
         })
         .catch(error => {
           Swal.fire({

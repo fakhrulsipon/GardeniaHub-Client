@@ -5,14 +5,21 @@ const BrowseTips = () => {
 
     const [tips, setTips] = useState([])
     const [difficulty, setDifficulty] = useState("");
+    const [loading, setLoading] = useState(true);
 
        useEffect(() => {
+        setLoading(true)
   fetch(
     `http://localhost:3000/share-garden${difficulty ? `?difficulty=${difficulty}` : ''}`
   )
     .then((res) => res.json())
     .then((data) => setTips(data))
+    setLoading(false)
 }, [difficulty]);
+
+if(loading){
+  return <span className="loading loading-bars loading-xl"></span>
+}
 
 
     return (
@@ -61,7 +68,7 @@ const BrowseTips = () => {
                 <td className="p-3 border">
                   <Link
                     to={`/tip-details/${tip._id}`}
-                    className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300 text-sm lg:text-base"
+                    className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 hover:underline transition duration-300 text-sm lg:text-base"
                   >
                     See More
                   </Link>

@@ -19,6 +19,7 @@ import MyTips from './pages/MyTips';
 import UpdateTips from './pages/UpdateTips';
 import ExploreGardeners from './pages/ExploreGardeners';
 import NotFound from './pages/NotFound';
+import ThemeProvider from './provider/ThemeContext';
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: '/tip-details/:id',
         loader: ({params}) => fetch(`http://localhost:3000/tip-details/${params.id}`),
-        element: <TipDetails></TipDetails>
+        element: <PrivetRoute><TipDetails></TipDetails></PrivetRoute>
       },
       {
         path: '/myTips',
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
       {
         path: '/exploreGardeners',
         loader: () => fetch('http://localhost:3000/actives'),
+        hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>,
         element: <ExploreGardeners></ExploreGardeners>
       }
     ]
@@ -76,8 +78,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <AuthProvider>
+  <ThemeProvider>
+    <AuthProvider>
 <RouterProvider router={router} />
   </AuthProvider>
+  </ThemeProvider>
   </StrictMode>,
 )
