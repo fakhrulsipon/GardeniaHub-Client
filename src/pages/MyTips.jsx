@@ -9,7 +9,7 @@ const MyTips = () => {
     const {user} = use(AuthContext)
     
     const [myTips, setMyTips] = useState([])
-    console.log(myTips)
+    
 
     
 useEffect(() => {
@@ -69,7 +69,7 @@ useEffect(() => {
         <thead className="bg-green-100 dark:bg-green-700 text-gray-700 dark:text-green-100">
           <tr>
             <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Title</th>
-            <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Category</th>
+            <th className="border hidden md:block dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Category</th>
             <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Plant Type</th>
             <th className="border dark:border-gray-700 px-2 sm:px-4 py-2 text-left">Actions</th>
           </tr>
@@ -78,7 +78,7 @@ useEffect(() => {
           {myTips.map(tip => (
             <tr key={tip._id} className="text-gray-800 dark:text-gray-100 hover:bg-green-50 dark:hover:bg-gray-700 transition-colors">
               <td className="border dark:border-gray-700 px-2 sm:px-4 py-2">{tip.title}</td>
-              <td className="border dark:border-gray-700 px-2 sm:px-4 py-2">{tip.category}</td>
+              <td className="border hidden md:block dark:border-gray-700 px-2 sm:px-4 py-2">{tip.category}</td>
               <td className="border dark:border-gray-700 px-2 sm:px-4 py-2">{tip.topic}</td>
               <td className="border dark:border-gray-700 px-2 sm:px-4 py-2 flex flex-col sm:flex-row items-start sm:items-center gap-2">
                 <Link

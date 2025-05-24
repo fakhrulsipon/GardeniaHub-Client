@@ -4,12 +4,14 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../provider/AuthProvider';
 import { use, useState } from 'react';
 import Swal from 'sweetalert2';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignIn = () => {
   const { signInUser, googleUser, updateProfileUser, setUser } = use(AuthContext);
   const [showError, setErrorShow] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
+  const [show, setShow] = useState(true)
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -108,62 +110,70 @@ const SignIn = () => {
         })
     }
     return (
-      <div className="max-w-md mx-auto mt-12 p-6 shadow-lg rounded-xl bg-white">
-        <h2 className="text-2xl font-bold mb-4 text-center">SignIn</h2>
-        <form onSubmit={handleSignIn} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Name"
-            name='name'
-            className="w-full px-4 py-2 border rounded"
-            required
-          />
+      <div className="max-w-md mx-auto mt-12 p-6 shadow-lg rounded-xl bg-white dark:bg-gray-900">
+  <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">SignIn</h2>
+  <form onSubmit={handleSignIn} className="space-y-4">
+    <input
+      type="text"
+      placeholder="Name"
+      name="name"
+      className="w-full px-4 py-2 border rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700"
+      required
+    />
 
-          <input
-            type="text"
-            placeholder="Photo URL"
-            name='photo'
-            className="w-full px-4 py-2 border rounded"
-            required
-          />
+    <input
+      type="text"
+      placeholder="Photo URL"
+      name="photo"
+      className="w-full px-4 py-2 border rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700"
+      required
+    />
 
-          <input
-            type="email"
-            placeholder="Email"
-            name='email'
-            className="w-full px-4 py-2 border rounded"
-            required
-          />
+    <input
+      type="email"
+      placeholder="Email"
+      name="email"
+      className="w-full px-4 py-2 border rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700"
+      required
+    />
 
-          <input
-            type="password"
-            name='password'
-            placeholder="Password"
-            className="w-full px-4 py-2 border rounded"
-            required
-          />
-          {
-            showError && <p className='text-red-600'>{showError}</p>
-          }
-          <button type="submit" className="w-full bg-green-600 text-white py-2 rounded">
-            SignIn
-          </button>
-        </form>
+    <div className='relative'>
+      <input
+      type={show? 'text': 'password'}
+      name="password"
+      placeholder="Password"
+      className="w-full px-4 py-2 border rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700"
+      required
+    />
 
-        <button onClick={handleGoogle}
-          className="mt-4 w-full border border-gray-300 rounded-md py-2 px-4 flex items-center justify-center gap-3 hover:bg-gray-100 transition-all duration-200"
-        >
-          <FcGoogle size={22} />
-          <span className="font-medium text-gray-700">Continue with Google</span>
-        </button>
+    <button onClick={() => {setShow(!show)}} style={{ zIndex: 10 }} className='btn btn-xs absolute bottom-2 right-6'>{show ? <FaEyeSlash size={18}/>: <FaEye size={18}/> }</button>
+    </div>
 
-        <p className="mt-4 text-center">
-          Already have an account?{" "}
-          <Link to="/login" className="text-green-600 font-semibold">
-            Login here
-          </Link>
-        </p>
-      </div>
+    {showError && <p className="text-red-600">{showError}</p>}
+
+    <button
+      type="submit"
+      className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-all duration-200"
+    >
+      SignIn
+    </button>
+  </form>
+
+  <button
+    onClick={handleGoogle}
+    className="mt-4 w-full border border-gray-300 dark:border-gray-600 rounded-md py-2 px-4 flex items-center justify-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+  >
+    <FcGoogle size={22} />
+    <span className="font-medium text-gray-700 dark:text-gray-200">Continue with Google</span>
+  </button>
+
+  <p className="mt-4 text-center text-gray-700 dark:text-gray-300">
+    Already have an account?{" "}
+    <Link to="/login" className="text-green-600 dark:text-green-400 font-semibold">
+      Login here
+    </Link>
+  </p>
+</div>
     );
   };
 

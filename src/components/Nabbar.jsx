@@ -42,7 +42,7 @@ const Nabbar = () => {
 
   return (
     
-    <div className="navbar bg-green-50 dark:bg-gray-900 text-green-900 dark:text-white shadow-md px-4 md:px-8 lg:px-20 py-2">
+    <div className="navbar sticky top-0 z-50  bg-green-50 dark:bg-gray-900 text-green-900 dark:text-white shadow-md px-4 md:px-8 lg:px-20 py-2">
       {/* Start */}
        <h1 className="text-2xl hidden md:hidden font-bold text-green-800 hover:text-green-600 transition-all duration-300">
           🌱 GardeniaHub

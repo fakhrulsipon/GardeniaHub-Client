@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const TipDetails = () => {
     const tipDetails = useLoaderData();
@@ -18,13 +19,19 @@ const TipDetails = () => {
           if (data.success) {
             setLikes(likes + 1);
             setLiked(true);
-          } else {
-            alert('Could not update like count. Please try again.');
-          }
+            return
+          } 
         })
         .catch(err => {
-          console.error('Error updating like:', err);
-          alert('Something went wrong. Please try again later.');
+          Swal.fire({
+                      title: 'Error!',
+                      text: err.message,
+                      icon: 'error',
+                      timer: 3000,
+                      timerProgressBar: true,
+                      showConfirmButton: false
+                    });
+         
         });
     }
     };
@@ -49,7 +56,7 @@ const TipDetails = () => {
                     liked ? 'bg-green-500' : 'bg-gray-500 hover:bg-green-600'
                 }`}
             >
-                👍 Like {likes > 0 && `(${likes})`}
+                👍 Like  {likes}
             </button>
         </div>
         </>

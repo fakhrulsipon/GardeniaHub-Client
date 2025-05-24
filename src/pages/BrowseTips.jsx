@@ -19,9 +19,13 @@ const BrowseTips = () => {
 
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setTips(data))
-    setLoading(false)
+      .then((data) => {
+        setTips(data)
+        setLoading(false)
+      })
+       
   }, [difficulty]);
+ 
 
   if (loading) {
     return <span className="loading loading-bars loading-xl"></span>
