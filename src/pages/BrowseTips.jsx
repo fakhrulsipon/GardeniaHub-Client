@@ -11,7 +11,7 @@ const BrowseTips = () => {
   useEffect(() => {
     setLoading(true)
 
-    let url = 'http://localhost:3000/share-garden';
+    let url = 'https://gardenia-hub-server-side.vercel.app/share-garden';
 
     if (difficulty) {
       url += `?difficulty=${difficulty}`;

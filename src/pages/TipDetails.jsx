@@ -11,7 +11,7 @@ const TipDetails = () => {
 
     const handleLike = () => {
        if (!liked) {
-      fetch(`http://localhost:3000/share-garden/like/${tipDetails._id}`, {
+      fetch(`https://gardenia-hub-server-side.vercel.app/share-garden/like/${tipDetails._id}`, {
         method: 'PATCH',
       })
         .then(res => res.json())

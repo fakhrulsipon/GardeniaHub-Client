@@ -9,7 +9,7 @@ const ActiveGardeners = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('http://localhost:3000/active')
+    fetch('https://gardenia-hub-server-side.vercel.app/active')
       .then(res => res.json())
       .then(data => {
         setActiveGardeners(data);

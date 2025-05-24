@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/tip-details/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/tip-details/${params.id}`),
+        loader: ({params}) => fetch(`https://gardenia-hub-server-side.vercel.app/tip-details/${params.id}`),
         element: <PrivetRoute><TipDetails></TipDetails></PrivetRoute>
       },
       {
@@ -58,12 +58,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/updateTips/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/tip-details/${params.id}`),
+        loader: ({params}) => fetch(`https://gardenia-hub-server-side.vercel.app/tip-details/${params.id}`),
         element: <PrivetRoute><UpdateTips></UpdateTips></PrivetRoute>
       },
       {
         path: '/exploreGardeners',
-        loader: () => fetch('http://localhost:3000/actives'),
+        loader: () => fetch('https://gardenia-hub-server-side.vercel.app/actives'),
         hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>,
         element: <ExploreGardeners></ExploreGardeners>
       }

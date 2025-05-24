@@ -16,7 +16,7 @@ const UpdateTips = () => {
         const formData = new FormData(form)
         const updatedTips = Object.fromEntries(formData.entries())
 
-        fetch(`http://localhost:3000/tip-details/${updateTips._id}`, {
+        fetch(`https://gardenia-hub-server-side.vercel.app/tip-details/${updateTips._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -13,7 +13,7 @@ const MyTips = () => {
 
     
 useEffect(() => {
-    fetch(`http://localhost:3000/share-gardens/${user?.email}`)
+    fetch(`https://gardenia-hub-server-side.vercel.app/share-gardens/${user?.email}`)
     .then(res => res.json())
     .then(data =>{
         setMyTips(data)
@@ -34,7 +34,7 @@ useEffect(() => {
 
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:3000/share-garden/${id}`, {
+                fetch(`https://gardenia-hub-server-side.vercel.app/share-garden/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

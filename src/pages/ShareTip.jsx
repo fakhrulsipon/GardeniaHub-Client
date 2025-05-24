@@ -20,7 +20,7 @@ const ShareTip = () => {
 
         console.log(allTips)
 
-        fetch('http://localhost:3000/share-garden',{
+        fetch('https://gardenia-hub-server-side.vercel.app/share-garden',{
             method: "POST",
             headers: {
                 'content-type' : 'application/json'

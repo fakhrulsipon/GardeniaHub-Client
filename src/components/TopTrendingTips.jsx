@@ -8,7 +8,7 @@ const TopTrendingTips = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetch('http://localhost:3000/trending-tips')
+        fetch('https://gardenia-hub-server-side.vercel.app/trending-tips')
         .then(res => res.json())
         .then(data => {
             setTopTips(data)

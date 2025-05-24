@@ -17,14 +17,14 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password)
+    // console.log(email, password)
 
     loginUser(email, password)
       .then(res => {
         if (res.user) {
           Swal.fire({
             title: "Congratulations!",
-            text: "You have successfully Login With Google",
+            text: "You have successfully Login",
             icon: "success",
             timer: 3000,
             timerProgressBar: true,
