@@ -8,7 +8,7 @@ const UpdateTips = () => {
     const navigate = useNavigate()
     const { user } = use(AuthContext)
     const updateTips = useLoaderData();
-    console.log(updateTips)
+    // console.log(updateTips)
 
     const handleUpdate = (e) => {
         e.preventDefault()

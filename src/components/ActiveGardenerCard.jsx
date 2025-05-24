@@ -1,7 +1,7 @@
 
 
 const ActiveGardenerCard = ({ gardener }) => {
-    console.log(gardener)
+    
     return (
         <div className="bg-gradient-to-tr from-green-50 via-white to-green-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 rounded-2xl shadow-lg p-5 border border-green-300 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer">
   <img 
