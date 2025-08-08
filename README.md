@@ -39,3 +39,27 @@ Firebase (Authentication)
 
 MongoDB & Express.js (Backend & Database)
 
+📦 How to Run Locally
+# 1️⃣ Clone the repository
+git clone https://github.com/fakhrulsipon/gardeniahub.git
+cd GardeniaHub-Client
+
+# 2️⃣ Install frontend dependencies
+npm install
+
+# 3️⃣ Add environment variables
+# ➜ Create a .env file with:
+# - VITE_FIREBASE_API_KEY
+# - VITE_FIREBASE_AUTH_DOMAIN
+# - VITE_MONGODB_URI
+# - VITE_STRIPE_PUBLIC_KEY
+
+# 4️⃣ Start development server
+npm run dev
+
+# 5️⃣ Run backend separately if using decoupled server
+cd GardeniaHub_Server
+npm install
+nodemon index.js
+
+
