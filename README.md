@@ -6,7 +6,6 @@
 # 🌿 Project Name: **GardeniaHub** – Gardening Community & Resource Hub
 
 🔗 Live Site URL: https://gardeniahub-auth.web.app/
-(Replace with your actual URL if needed)
 
 
 ✅ Key Features:
