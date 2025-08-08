@@ -1,4 +1,9 @@
-🌿 Project Name: GardeniaHub – Gardening Community & Resource Hub
+## 📸 Project Screenshot
+
+![Screenshot](https://i.postimg.cc/GtMwcfBg/Screenshot-2025-08-08-152754.png)
+
+
+#🌿 Project Name: GardeniaHub – Gardening Community & Resource Hub
 🔗 Live Site URL: https://gardeniahub-auth.web.app/
 (Replace with your actual URL if needed)
 
