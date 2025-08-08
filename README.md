@@ -1,42 +1,39 @@
-## 📸 Project Screenshot
+# ​ GardeniaHub – Gardening Community & Resource Hub
 
-![Screenshot](https://i.postimg.cc/GtMwcfBg/Screenshot-2025-08-08-152754.png)
+**Live Demo:** https://gardeniahub-auth.web.app/
 
+---
 
-# 🌿**GardeniaHub** – Gardening Community & Resource Hub
+##  Project Overview
+GardeniaHub is a vibrant platform for gardening enthusiasts to explore, share tips, enroll in gardening events, and connect with a like-minded community. It’s designed for clarity, engagement, and ease-of-use with role-based access and secure authentication.
 
-🔗 Live Site URL: https://gardeniahub-auth.web.app/
+---
 
+##  Features Highlight
+-  Explore and browse various gardening tips and articles  
+-  Enroll in events with seat limitations  
+-  Role-based access: Admin & User dashboards  
+-  Secure login with Firebase Authentication  
+-  Responsive UI with Light/Dark theme toggle
 
-✅ Key Features:
-🔐 Firebase Authentication (Google & Email Login)
+---
 
-🌱 Browse & Share Gardening Tips with images and categories
+##  Technologies Used
+- **Frontend:** React.js, Tailwind CSS, DaisyUI  
+- **Backend:** Firebase Authentication, Firestore Database  
+- **UX Enhancements:** React Hook Form, React Router  
+- **Design & UI:** Responsive layouts, Theme toggler
 
-📋 My Tips Page to view only the logged-in user’s shared tips
+---
 
-🧑‍🌾 Explore Gardeners – discover other gardeners and their profiles
-
-🎨 Dark/Light Theme Toggle for a better user experience
-
-🔒 Protected Routes for authenticated access only
-
-🎯 Filter Tips by Difficulty (Easy, Medium, Hard)
-
-🌐 Responsive Design – works seamlessly on all screen sizes
-
-⚙️ MongoDB + Express Backend for data management (CRUD operations)
-
-📝 Project Description:
-GardeniaHub is a community-driven platform for gardening enthusiasts to share and explore gardening tips. Users can register or log in using Firebase Authentication, browse gardening advice posted by others, and contribute their own tips with images, categories, and difficulty levels.
-
-The app includes personalized features such as “My Tips” where users can manage their shared posts, and also provides the ability to filter tips by difficulty level. The Explore Gardeners section showcases other community members, fostering collaboration and knowledge exchange.
-
-This project is built using:
-
-React.js (Frontend)
-
-Tailwind CSS (Styling)
+##  Dependencies
+- react  
+- react-dom  
+- react-router-dom  
+- tailwindcss  
+- daisyui  
+- firebase  
+- react-hook-form  
 
 Firebase (Authentication)
 
